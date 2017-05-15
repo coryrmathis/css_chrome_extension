@@ -22,9 +22,13 @@ $("body").find("*").hover(function(){
             selector += "." + $.trim(classNames).replace(/\s/gi, ".");
          }
 
+         var nthChild = $(this).index() + 1
+         if ($(this).parent().children().length > 1) {
+         	selector += ":nth-child(" + nthChild + ")"
+         }
+
         return console.log(selector)
-        // needs to be more specific ---not getting nth child
-        // add index --nth child
+
     })
 	},function(){
 		$(this).css("box-shadow", "none")
