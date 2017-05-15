@@ -34,23 +34,40 @@ $("body").find("*").hover(function(){
         $('#cssinputhelper').remove()
         $(this).append(showInput(selector))
         $('*').off('click')
-        return console.log(selector)
+        $('#csshelpercheck').on('click', handleCheck(selector))
+        $('#csshelperex').on('click', handleEx(selector))
+        return console.log(JSON.stringify(cssChanges, undefined, 2))
 
     })
 	},function(){
 		$(this).css("box-shadow", "none")
 })
 
+
+
+var handleCheck = function(selector){
+	
+}
+
+var handleEx = function(selector){
+
+}
+
 var showInput = function(selector){
 	var input = `<div id='cssinputhelper' style="display:flex; flex-direction:column; margin: 20px; border: 2px solid black; padding: 5px; justify-content: center; align-items: center;">
 								<label for="selector">${selector}</label>
-								<div>
-									<input type="text" placeholder="Property" />
-									<input type="text" placeholder="Value" />
-									<button>check</button>
-									<button>ex</button>
-								</div>
+								${addInput(selector)}
 							</div>`
+	return input
+}
+
+var addInput = function(selector){
+	var input = `<div>
+									<input class='csshelperproperty' type="text" placeholder="Property" />
+									<input class='csshelpervalue' type="text" placeholder="Value" />
+									<button id='csshelpercheck'>check</button>
+									<button id='csshelperex'>ex</button>
+								</div>`
 	return input
 }
 
